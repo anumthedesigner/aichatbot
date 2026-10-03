@@ -34,9 +34,9 @@ for message in st.session_state.messages:
 user_message = st.chat_input("Type your message...")
 
 if user_message:
-    st.chat_message("user").markdown(user_message)
+    if user_message and user_message.strip():
 
-    st.session_state.messages.append({
+     st.session_state.messages.append({
         "role": "user",
         "content": user_message
     })
@@ -48,7 +48,7 @@ if user_message:
         }
     ]
 
-    messages.extend(st.session_state.messages)
+    messages.extend(st.session_state.messages[-10:])
 
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
