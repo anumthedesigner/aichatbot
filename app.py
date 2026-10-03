@@ -6,6 +6,15 @@ st.set_page_config(
     page_icon="🤖"
 )
 
+with st.sidebar:
+    st.header("🤖 AI Chatbot")
+    st.write("Powered by Ollama + Gemma 3:1b")
+    st.write("Ask anything and get an AI response.")
+    st.caption("Model: Gemma 3:1b")
+            
+if st.button("🗑️ Clear Chat"):
+    st.session_state.messages = []
+    st.rerun()        
 st.title("🤖 AI Chatbot")
 st.write("Chat with Gemma 3 using Ollama.")
 
@@ -59,4 +68,3 @@ if user_message:
 
             except Exception as e:
                 st.error(f"Error: {e}")
-                
